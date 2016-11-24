@@ -1,0 +1,17 @@
+<resources>
+    <string name="facebook_app_id">526312107558266</string>
+    <string name="app_name">KiteFlightAndroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="logo">logo</string>
+    <string name="welcome">Welcome</string>
+    <string name="please_enter_details_for_login">Please enter details for Login</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_apos_t_have_acount_please">Don\'t have acount Please</string>
+    <string name="signup">Signup</string>
+    <string name="title_activity_main_picture">MainPicture</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_kite_credits">KiteCreditsActivity</string>
+</resources>

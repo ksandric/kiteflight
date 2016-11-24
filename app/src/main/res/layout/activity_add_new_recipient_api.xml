@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_new_recipient_api"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.dreamcast.KiteFlightAndroidShvaiba.AddNewRecipientAPI">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Please Enter Inmate Details ..."
+        android:id="@+id/textView9"
+        android:textColor="#4dabf5"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView9"
+        android:layout_above="@+id/buttonSave"
+        android:id="@+id/frameLayout6">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="First Name"
+            android:gravity="left"
+            android:id="@+id/editTextFirstNameAPI"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextLastNameAPI"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="left"
+            android:hint="Last Name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editTextIDNumberAPI"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Inmate ID Number"
+            android:gravity="left" />
+
+        <Spinner
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frameLayout6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spinner"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frameLayout6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spinner2"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+
+
+    </FrameLayout>
+
+    <Button
+        android:textAllCaps="false"
+        android:text="Save"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/buttonSaveAPI"
+        android:textColor="@android:color/background_light"
+        android:background="#2196f3"
+        android:layout_marginRight="25dp" />
+
+    <Button
+        android:textAllCaps="false"
+        android:text="Cancel"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:id="@+id/buttonCancelAPI"
+        android:textColor="@android:color/background_light"
+        android:background="#838383"
+        android:layout_alignBaseline="@+id/buttonSaveAPI"
+        android:layout_alignBottom="@+id/buttonSaveAPI"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp"
+        android:layout_width="150dp" />
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:textAlignment="gravity"-->
+        <!--android:gravity="top"-->
+        <!--android:inputType="textMultiLine"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="facilities_id"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/editText7"-->
+        <!--android:layout_below="@+id/frameLayout6"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_above="@+id/buttonSaveAPI" />-->
+
+
+</RelativeLayout>

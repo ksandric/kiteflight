@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context="com.example.dreamcast.KiteFlightAndroidShvaiba.SplashActivity">
+
+    <FrameLayout
+        android:id="@+id/frameSplash1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#2196f3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:rotation="-85"
+            android:id="@+id/imageViewsplash_1"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:alpha=".2"
+            android:contentDescription="background image 2"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_1"
+            android:layout_marginLeft="51dp" />
+
+        <ImageView
+            android:rotation="-35"
+            android:id="@+id/imageViewsplash_2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:alpha=".2"
+            android:contentDescription="background image 2"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_2"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:rotation="-35"
+            android:id="@+id/imageViewsplash_1_2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:alpha=".2"
+            android:contentDescription="background image 3"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_1" />
+
+        <ImageView
+            android:rotation="35"
+            android:id="@+id/imageViewsplash_2_2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:alpha="0.2"
+            android:contentDescription="background image 4"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_2"
+            android:layout_marginLeft="28dp" />
+
+        <ImageView
+            android:rotation="-12"
+            android:id="@+id/imageView8"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:alpha=".2"
+            android:contentDescription="background image 2"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_1"
+            android:layout_marginLeft="51dp"
+            android:layout_marginTop="-25dp" />
+
+        <ImageView
+            android:rotation="-5"
+            android:id="@+id/imageView10"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:alpha="0.2"
+            android:contentDescription="background image 4"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_2"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="25dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:id="@+id/buttonRegister"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/border_for_button"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="45dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Let&apos;s start with Kite Flight to keep families connected that Suffer from Incarceration.."
+            android:id="@+id/splashText"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:layout_marginBottom="185dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/buttonLogin0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="115dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#ffffff"
+            android:text="Log in"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="left|bottom" />
+
+        <ImageView
+
+            android:id="@+id/imageViewSplash"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo"
+            android:layout_marginTop="100dp" />
+
+
+    </FrameLayout>
+
+</RelativeLayout>

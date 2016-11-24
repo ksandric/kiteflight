@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="0dp"
+        android:weightSum="1"
+        android:scrollbars="none">
+
+        <ImageView
+            android:id="@+id/pic"
+            android:src="@drawable/image"
+            android:layout_height="70dp"
+            android:layout_width="70dp" />
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="0.13"
+            android:layout_width="200dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/name"
+                android:text="User name"
+                android:textColor="#000"
+                android:layout_weight="2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/mail"
+                android:layout_marginTop="5dp"
+                android:text="email"
+                android:textColor="#4dabf5"
+                android:layout_weight="2"/>
+
+            <TextView
+                android:visibility="gone"
+                android:text="Phone no."
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/no"
+                android:layout_weight="1"
+                android:textSize="12dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.17"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center"
+            android:gravity="center"
+
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <CheckBox
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/check" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/radioButton"
+                android:duplicateParentState="false"
+                android:checked="false"
+                android:gravity="top" />
+
+            <ImageButton
+                android:src="@drawable/vector_edit_button"
+                android:id="@+id/imageButton"
+                android:layout_height="wrap_content"
+                android:layout_width="35dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

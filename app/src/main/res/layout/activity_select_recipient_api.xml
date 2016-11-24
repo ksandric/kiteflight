@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_select_recipient_api"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#e7e7e7"
+    tools:context="com.example.dreamcast.KiteFlightAndroidShvaiba.SelectRecipientAPI">
+
+    <ListView
+
+        android:divider="#e7e7e7"
+        android:dividerHeight="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/contacts_listAPI"
+        tools:listitem="@layout/list_view"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="10dp"
+         />
+
+    <Button
+        android:text="+ Add New Rcipient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/buttonAddNewRcipientAPI"
+        android:background="@android:color/background_light"
+        android:textColor="#4dabf5" />
+
+</RelativeLayout>

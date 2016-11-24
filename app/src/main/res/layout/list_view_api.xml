@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:weightSum="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="320dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name2"
+                android:text="User name"
+                android:textColor="#000"
+                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name3"
+                android:text="Phone"
+                android:textColor="#4dabf5"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textRecipientID"
+                android:text="ID"
+                android:textColor="#4dabf5"
+                android:visibility="gone"/>
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:id="@+id/mail"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:text="Phone"-->
+                <!--android:textColor="#4dabf5"-->
+                <!--android:layout_weight="2"/>-->
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:src="@drawable/vector_circle"
+                android:id="@+id/imageView25"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

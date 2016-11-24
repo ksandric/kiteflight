@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dreamcast.KiteFlightAndroidShvaiba.MainPicture"
+    tools:showIn="@layout/app_bar_main_picture"
+    android:background="#e7e7e7">
+
+    <FrameLayout
+        android:id="@+id/frameMainPicture1"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:background="#2196f3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:rotation="-85"
+            android:id="@+id/imageView4"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:alpha=".2"
+            android:contentDescription="background image 2"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_1"
+            android:layout_marginLeft="95dp" />
+
+        <ImageView
+            android:rotation="-35"
+            android:id="@+id/imageView5"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:alpha=".2"
+            android:contentDescription="background image 2"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_2"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:rotation="-35"
+            android:id="@+id/imageView6"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:alpha=".2"
+            android:contentDescription="background image 3"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_1"
+            android:layout_marginLeft="50dp" />
+
+        <ImageView
+            android:rotation="35"
+            android:id="@+id/imageView7"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:alpha="0.2"
+            android:contentDescription="background image 4"
+            android:scaleType="centerInside"
+            android:src="@drawable/vector_logo_2"
+            android:layout_marginLeft="28dp" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Select A Main Image For Your Postcard"
+            android:id="@+id/textViewTitleSetPic"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:gravity="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@+id/frameMainPicture1"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/FrameMainPicture2"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/no_photo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/no_photo"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="New Photo"
+            android:id="@+id/buttonNewPhoto"
+            android:layout_gravity="left|bottom"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:layout_marginLeft="25dp"
+            android:textColor="#ffffff"
+            android:onClick="onClickNewPhoto" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Use This One"
+            android:id="@+id/buttonUseThisOne"
+            android:layout_gravity="right|bottom"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:background="@color/colorAccent"
+            android:layout_marginRight="25dp"
+            android:textColor="#ffffff"
+            android:onClick="onClickUseThis" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/FrameMainPicture2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/FrameMainPicture3">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/vector_line"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center_horizontal|top"
+            android:alpha="0.1"
+            android:adjustViewBounds="false" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/FrameMainPicture4"
+            android:background="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="0dp">
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:src="@drawable/no_photo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/imageMain"
+                android:layout_gravity="top|left|center_vertical" />
+
+            <ImageView
+                android:rotation="90"
+                android:scaleType="fitXY"
+                android:src="@drawable/vector_line"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView9"
+                android:layout_gravity="center"
+                android:alpha="0.1"
+                android:adjustViewBounds="false" />
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="MAIN IMAGE LOCATION"
+                android:id="@+id/textView3"
+                android:layout_gravity="left|center_vertical"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_marginLeft="19dp" />
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:src="@drawable/no_photo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/avatarImage"
+                android:layout_gravity="right|top"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp" />
+
+            <ImageView
+                android:alpha="0.9"
+                android:rotation="90"
+                android:scaleType="fitXY"
+                android:src="@drawable/vector_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageArrow"
+                android:layout_gravity="right|top" />
+        </FrameLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>
