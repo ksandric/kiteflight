@@ -25,9 +25,6 @@ public class SplashActivity extends AppCompatActivity {
 
         mainContext = this;
 
-        //set the screen orientation
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         //configuration ActionBar
         getSupportActionBar().hide();
 

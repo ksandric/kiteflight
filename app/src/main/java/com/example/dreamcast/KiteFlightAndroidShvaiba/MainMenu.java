@@ -45,9 +45,6 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        //set the screen orientation
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         mainContext = this;
 
         imageButtonHistory = (ImageView) findViewById((R.id.imageViewButtonOrderHistory));

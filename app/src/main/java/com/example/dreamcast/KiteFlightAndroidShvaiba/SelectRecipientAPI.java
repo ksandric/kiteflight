@@ -36,9 +36,9 @@ public class SelectRecipientAPI extends AppCompatActivity {
     String   apiURL       = "http://staging.api.kiteflightapp.com/v1/recipients/users_recipients";
     String   api_key      = "g4sksgk0kspscc4oogo8wow0w0ocossg000og0so";
 
-    String   user_id = "NA";
+    String   user_id = "NA", recipient_id = "NA";
 
-    int total;
+    int total, iswitch = 0;
 
     EditText text;
     Context  mainContext;
@@ -53,9 +53,6 @@ public class SelectRecipientAPI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_recipient_api);
-
-        //set the screen orientation
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //configuration ActionBar
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -86,19 +83,26 @@ public class SelectRecipientAPI extends AppCompatActivity {
         lvRecipients.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                Toast.makeText(getApplicationContext(), ((TextView) itemClicked.findViewById(R.id.textRecipientID)).getText(), Toast.LENGTH_SHORT).show();
-
+                //Toast.makeText(getApplicationContext(), ((TextView) itemClicked.findViewById(R.id.textRecipientID)).getText(), Toast.LENGTH_SHORT).show();
+                recipient_id = ((TextView) itemClicked.findViewById(R.id.textRecipientID)).getText().toString();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SelectRecipientAPI.this);
-                builder.setTitle("Важное сообщение!")
-                        .setMessage("Покормите кота!")
+                builder.setTitle("")
+                        .setMessage("Delete recipient: " + ((TextView) itemClicked.findViewById(R.id.name2)).getText() + "?")
                         .setIcon(R.drawable.vector_delete)
                         .setCancelable(true)
-                        .setNegativeButton("ОК, иду на кухню",
+                        .setPositiveButton("Yes delete",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        iswitch = 1;
+                                        new UpdateTask(mainContext).execute(apiURL);
                                         dialog.cancel();
                                     }
-                                });
+                                })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
                 AlertDialog alert = builder.create();
                 alert.show();
 
@@ -116,9 +120,9 @@ public class SelectRecipientAPI extends AppCompatActivity {
                 else{
                     ((ImageView) itemClicked.findViewById(R.id.imageView25)).setVisibility(View.VISIBLE);
                 }
-
-                //Intent intent = new Intent(SelectRecipientAPI.this, MainPicture.class);
-                //startActivity(intent);
+                //
+                Intent intent = new Intent(SelectRecipientAPI.this, MainPicture.class);
+                startActivity(intent);
 
             }
         });
@@ -151,11 +155,22 @@ public class SelectRecipientAPI extends AppCompatActivity {
             JSONParser jParser = new JSONParser();
             // adding parameters in the query
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("api_key", api_key));
-            params.add(new BasicNameValuePair("user_id", user_id));
 
-            //send a request using the GET method
-            JSONObject json = jParser.makeHttpRequest(url, "GET", params);
+            JSONObject json = null;
+
+            if (iswitch == 1){
+                params.add(new BasicNameValuePair("api_key", api_key));
+                params.add(new BasicNameValuePair("recipient_id", recipient_id));
+                json = jParser.makeHttpRequest("http://staging.api.kiteflightapp.com/v1/recipients/delete", "POST", params);
+            }
+            else{
+                params.add(new BasicNameValuePair("api_key", api_key));
+                params.add(new BasicNameValuePair("user_id", user_id));
+
+                //send a request using the GET method
+                json = jParser.makeHttpRequest(url, "GET", params);
+            }
+
             return json;
         }
 
@@ -170,7 +185,9 @@ public class SelectRecipientAPI extends AppCompatActivity {
 
                     total = Integer.parseInt(jsonData.getString("total"));
 
-                    //Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
+                    if (iswitch == 1){
+                        Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
 
                     if (total != 0){
                         jSONAdapter = new JSONAdapterUser_Recipients(SelectRecipientAPI.this, jsonData.getJSONArray("data"));

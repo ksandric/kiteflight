@@ -38,4 +38,12 @@
         android:background="@android:color/background_light"
         android:textColor="#4dabf5" />
 
+    <TextView
+        android:text="Long click for delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView11" />
+
 </RelativeLayout>

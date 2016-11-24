@@ -27,9 +27,6 @@ public class PurchaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
 
-        //set the screen orientation
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
 

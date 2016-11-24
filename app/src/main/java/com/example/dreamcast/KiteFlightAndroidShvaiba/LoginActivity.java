@@ -75,9 +75,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        //set the screen orientation
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         mainContext = this;
 
         AppEventsLogger.activateApp(this); //Facrbook event
