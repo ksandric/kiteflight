@@ -25,9 +25,6 @@ public class SplashActivity extends AppCompatActivity {
 
         mainContext = this;
 
-        //configuration ActionBar
-        getSupportActionBar().hide();
-
         login0   = (Button) findViewById(R.id.buttonLogin0);
         register = (Button) findViewById(R.id.buttonRegister);
 

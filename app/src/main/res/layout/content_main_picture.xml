@@ -85,8 +85,7 @@
         android:layout_height="225dp"
         android:layout_below="@+id/frameMainPicture1"
         android:layout_centerHorizontal="true"
-        android:id="@+id/FrameMainPicture2"
-        android:layout_alignParentStart="true">
+        android:id="@+id/FrameMainPicture2">
 
         <ImageView
             android:scaleType="fitXY"
