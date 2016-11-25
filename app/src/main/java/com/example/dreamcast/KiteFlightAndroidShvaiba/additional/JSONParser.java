@@ -19,6 +19,7 @@ import cz.msebera.android.httpclient.client.ClientProtocolException;
 import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.client.methods.HttpUriRequest;
 import cz.msebera.android.httpclient.client.utils.URLEncodedUtils;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
@@ -28,69 +29,39 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class JSONParser {
 
-    static InputStream is = null;
-    static JSONObject jObj = null;
-    static String json = "";
+    private final DefaultHttpClient httpClient = new DefaultHttpClient();
 
-    public JSONParser() {
-
-    }
     public JSONObject makeHttpRequest(String url, String method,
                                       List<NameValuePair> params) {
 
-        try {
+        try (final InputStream body = getResponseBody(url, method, params);
+             final BufferedReader reader = new BufferedReader(new InputStreamReader(body, "iso-8859-1"), 8)) {
 
-
-            if(method == "POST"){
-                DefaultHttpClient httpClient = new DefaultHttpClient();
-                HttpPost httpPost = new HttpPost(url);
-                httpPost.setEntity(new UrlEncodedFormEntity(params));
-
-                HttpResponse httpResponse = httpClient.execute(httpPost);
-                HttpEntity httpEntity = httpResponse.getEntity();
-                is = httpEntity.getContent();
-
-            }else if(method == "GET"){
-
-                DefaultHttpClient httpClient = new DefaultHttpClient();
-                String paramString = URLEncodedUtils.format(params, "utf-8");
-                url += "?" + paramString;
-                HttpGet httpGet = new HttpGet(url);
-
-                HttpResponse httpResponse = httpClient.execute(httpGet);
-                HttpEntity httpEntity = httpResponse.getEntity();
-                is = httpEntity.getContent();
-            }
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
-            is.close();
-            json = sb.toString();
-        } catch (Exception e) {
-            Log.e("Buffer Error", "Error converting result " + e.toString());
-        }
-
-        try {
-            jObj = new JSONObject(json);
+            return new JSONObject(sb.toString());
+        } catch (IOException e) {
+            Log.e("IO_Error", "Error reading response body: " + e.toString());
         } catch (JSONException e) {
-            Log.e("JSON Parser", "Error parsing data " + e.toString());
+            Log.e("JSON_Parser", "Error parsing data: " + e.toString());
         }
+        return null;
+    }
 
-
-        return jObj;
-
+    private InputStream getResponseBody(String url, String method, List<NameValuePair> params) throws IOException {
+        HttpUriRequest request = null;
+        if ("POST".equals(method)) {
+            request = new HttpPost(url);
+            ((HttpPost)request).setEntity(new UrlEncodedFormEntity(params));
+        } else if ("GET".equals(method)) {
+            final String paramString = URLEncodedUtils.format(params, "utf-8");
+            request = new HttpGet(String.format("%s?%s", url, paramString));
+        }
+        HttpResponse httpResponse = httpClient.execute(request);
+        HttpEntity httpEntity = httpResponse.getEntity();
+        return httpEntity.getContent();
     }
 }
