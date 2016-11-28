@@ -105,6 +105,18 @@
         android:adjustViewBounds="false"
         android:layout_alignParentBottom="true" />
 
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewValueCreditBalance"
+        android:textColor="#ffffff"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:hint="Value"
+        android:layout_marginTop="15dp" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -124,16 +136,5 @@
             android:singleLine="true" />
 
     </FrameLayout>
-
-    <TextView
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textViewValueCreditBalance"
-        android:textColor="#ffffff"
-        android:hint="Value"
-        android:layout_above="@+id/textViewUserInfo"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

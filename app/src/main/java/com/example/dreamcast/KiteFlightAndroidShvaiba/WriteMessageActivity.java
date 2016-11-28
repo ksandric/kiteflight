@@ -21,6 +21,7 @@ public class WriteMessageActivity extends AppCompatActivity {
     TextView textValue;
     int Value = 200; // message length
     Context mainContext;
+    String avatarImage = "", mainImage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,11 @@ public class WriteMessageActivity extends AppCompatActivity {
         textValue.setText(Html.fromHtml("<font COLOR=\'BLACK\'> Wow..! You can send </font> <font COLOR=\'#FF2196F3\'>200 </font><font COLOR='BLACK'>Left Characters Message</font>"));
 
         edittext.addTextChangedListener(myEditTextListener);
+
+        Intent intent = getIntent();
+        avatarImage = intent.getStringExtra("avatarImage");
+        mainImage = intent.getStringExtra("mainImage");
+
         }
 
     private TextWatcher myEditTextListener = new TextWatcher() {
@@ -78,6 +84,8 @@ public class WriteMessageActivity extends AppCompatActivity {
                 else{
                     Intent intent = new Intent(this, PreviewActivity.class);
                     intent.putExtra("text", edittext.getText().toString());
+                    intent.putExtra("mainImage", mainImage);
+                    intent.putExtra("avatarImage", avatarImage);
                     startActivity(intent);
                 }
                 return true;

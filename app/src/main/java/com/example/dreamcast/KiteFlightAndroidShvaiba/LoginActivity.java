@@ -22,6 +22,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
@@ -67,6 +69,10 @@ public class LoginActivity extends AppCompatActivity {
     String   testEmail    = "test1Android@test.com";
     String   user_id = "NA";
 
+    String sEmailFacebook = "", sFNFacebook = "", sLNFacebook = "";
+
+    int iSwitch = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,16 +107,37 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
 
                 Profile profile = Profile.getCurrentProfile();
-                String firstName = profile.getFirstName();
+                AccessToken accessToken = loginResult.getAccessToken();
+                // Facebook Email address
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(
+                                    JSONObject object,
+                                    GraphResponse response) {
+                                try {
+                                    sEmailFacebook = object.getString("email").toString();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender, birthday");
+                request.setParameters(parameters);
+                request.executeAsync();
+
 
                 Toast.makeText(mainContext, "User ID: "
                         + loginResult.getAccessToken().getUserId()
                         + "\n" + "Auth Token: "
                         + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainMenu.class);
-                intent.putExtra("user_id", loginResult.getAccessToken().getUserId()); // parameter transfer
-                intent.putExtra("user_name", firstName);
-                startActivity(intent);
+
+                sFNFacebook = profile.getFirstName();
+                sLNFacebook = profile.getLastName();
+                iSwitch = 1;
+                new LoginActivity.UpdateTask(mainContext).execute(apiURL);
             }
 
             @Override
@@ -139,13 +166,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(cbTest.isChecked()) {
                     etEmailAddress.setText("test1Android@test.com");
-                    etPassword.setText("test1Android@test.com");
+                    etPassword.setText("test1Android");
                 }
 
-                String emailaddress = etEmailAddress.getText()+"";
-                String password1    = etPassword.getText()+"";
-
-                if (emailaddress.length() == 0 || password1.length() == 0)
+                if (etEmailAddress.getText().length() == 0 || etPassword.getText().length() == 0)
                 {
                     Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -198,21 +222,34 @@ public class LoginActivity extends AppCompatActivity {
             // adding parameters in the query
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
+            JSONObject json = null;
+
+            if (iSwitch == 1){
+                params.add(new BasicNameValuePair("api_key", api_key));
+                params.add(new BasicNameValuePair("email_address", sEmailFacebook));
+                params.add(new BasicNameValuePair("name_first", sFNFacebook));
+                params.add(new BasicNameValuePair("name_last", sLNFacebook));
+                params.add(new BasicNameValuePair("password", "Facebook"));
+                params.add(new BasicNameValuePair("device_token", device_token));
+                //send a request using the POST method
+                json = jParser.makeHttpRequest("http://staging.api.kiteflightapp.com/v1/users/register", "POST", params);
+            }
             if(cbTest.isChecked()) {
                 params.add(new BasicNameValuePair("api_key", api_key));
                 params.add(new BasicNameValuePair("email_address", testEmail));
                 params.add(new BasicNameValuePair("password", testPassword));
                 params.add(new BasicNameValuePair("device_token", device_token));
+                //send a request using the POST method
+                json = jParser.makeHttpRequest(url, "POST", params);
             }
-            else {
+            if (iSwitch == 0) {
                 params.add(new BasicNameValuePair("api_key", api_key));
                 params.add(new BasicNameValuePair("email_address", etEmailAddress.getText().toString()));
                 params.add(new BasicNameValuePair("password", etPassword.getText().toString()));
                 params.add(new BasicNameValuePair("device_token", device_token));
+                //send a request using the POST method
+                json = jParser.makeHttpRequest(url, "POST", params);
             }
-
-            //send a request using the POST method
-            JSONObject json = jParser.makeHttpRequest(url, "POST", params);
 
             return json;
         }
@@ -226,8 +263,17 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     //read parameter that sent the server
                     res = jsonData.getString("message");
-
-
+                    if (res.equals("User registered successfully.") || res.equals("User already exists.")) {
+                        iSwitch = 0;
+                        user_id = jsonData.getJSONObject("data").getString("id");
+                        etEmailAddress.setText(sEmailFacebook.toString());
+                        etPassword.setText("Facebook");
+                        new LoginActivity.UpdateTask(mainContext).execute(apiURL);
+//                        Intent intent = new Intent(LoginActivity.this, MainMenu.class);
+//                        intent.putExtra("user_id", user_id); // parameter transfer
+//                        intent.putExtra("user_name", sFNFacebook + " " + sLNFacebook + " " + sEmailFacebook);
+//                        startActivity(intent);
+                    }
 
                     if(res.equals("Logged in successfully.")) {
                         user_id = jsonData.getJSONObject("data").getString("id");
@@ -235,7 +281,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(mainContext, res + " id " + user_id.toString(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                         intent.putExtra("user_id", user_id); // parameter transfer
-                        intent.putExtra("user_name", jsonData.getJSONObject("data").getString("name_first") + " " + jsonData.getJSONObject("data").getString("name_last"));
+                        intent.putExtra("user_name", jsonData.getJSONObject("data").getString("name_first") + " " + jsonData.getJSONObject("data").getString("email_address"));
                         startActivity(intent);
                     }
                     else {

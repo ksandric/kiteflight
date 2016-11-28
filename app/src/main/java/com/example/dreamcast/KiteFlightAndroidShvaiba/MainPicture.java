@@ -3,6 +3,7 @@ package com.example.dreamcast.KiteFlightAndroidShvaiba;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,6 +51,8 @@ public class MainPicture extends AppCompatActivity {
         arrowImage.setVisibility(View.GONE);
         buttonUseThisOne.setClickable(false);
         buttonUseThisOne.setAlpha((float) 0.5);
+
+
     }
 
     public void onClickNewPhoto(View v) {
@@ -59,13 +62,27 @@ public class MainPicture extends AppCompatActivity {
     }
 
     public void onClickUseThis(View v) {
+
         if(togle == 1){
             avatarImage.setImageDrawable(mImageView.getDrawable());
+
             Intent intent = new Intent(this, WriteMessageActivity.class);
+
+            mainImage.buildDrawingCache();
+            avatarImage.buildDrawingCache();
+            Bitmap imageMain = mainImage.getDrawingCache();
+            Bitmap imageAvatar = avatarImage.getDrawingCache();
+
+            intent.putExtra("mainImage", imageMain);
+            intent.putExtra("avatarImage", imageAvatar);
+
             startActivity(intent);
         }
         if(togle == 0){
             mainImage.setImageDrawable(mImageView.getDrawable());
+
+
+
 
             //Change Screen
             arrowImage.setVisibility(View.VISIBLE);
