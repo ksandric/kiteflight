@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="0dp"
@@ -89,33 +90,21 @@
         android:layout_above="@+id/buttonLogin1"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/frameSplash1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/textViewWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageViewSplash"
             android:layout_gravity="left|top"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
             android:text="@string/welcome"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#2196f3" />
 
-
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewWelcome"
-            android:layout_gravity="left|top"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/please_enter_details_for_login" />
 
         <EditText
             android:textSize="17dp"
@@ -123,28 +112,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="60dp"
             android:alpha=".7"
             android:ems="10"
             android:hint="Your email adress"
             android:inputType="textEmailAddress"
-            android:textAlignment="center" />
-
-        <EditText
-            android:textSize="17dp"
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="150dp"
-            android:alpha=".7"
-            android:ems="10"
-            android:hint="Your password"
-            android:inputType="textPassword"
             android:textAlignment="center" />
 
         <ImageView
@@ -152,8 +126,8 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="70dp"
             android:alpha=".25"
             android:scaleType="centerInside"
             android:src="@drawable/vector_icon_email" />
@@ -163,8 +137,8 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="130dp"
             android:alpha=".25"
             android:scaleType="centerInside"
             android:src="@drawable/vector_icon_key" />
@@ -178,8 +152,9 @@
             android:clickable="true"
             android:text="@string/forgot_password"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="13dp"/>
+            android:layout_marginTop="170dp"
+            android:layout_marginRight="13dp"
+            android:visibility="invisible"/>
 
         <CheckBox
             android:alpha="0.1"
@@ -188,6 +163,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox_forTest" />
+
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/please_enter_details_for_login" />
+
+        <EditText
+            android:textSize="17dp"
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="120dp"
+            android:alpha=".7"
+            android:ems="10"
+            android:hint="Your password"
+            android:inputType="textPassword"
+            android:textAlignment="center" />
 
     </FrameLayout>
 
@@ -205,6 +205,23 @@
         android:textAllCaps="false"
         android:textStyle="bold"
         android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/buttonLogin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="#2196f3"
+        android:text="Login with Facebook"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/>
+
+
 
     <TextView
         android:id="@+id/textViewSignupText"
@@ -241,15 +258,16 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="45dp"
-        android:verticalScrollbarPosition="defaultPosition" />
+        android:verticalScrollbarPosition="defaultPosition"
+        android:visibility="gone"/>
 
     <TextView
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/login_button"
-        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/buttonLogin2"
+        android:layout_marginBottom="1dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView2" />
 

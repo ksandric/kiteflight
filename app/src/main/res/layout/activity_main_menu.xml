@@ -84,6 +84,16 @@
 
     </FrameLayout>
 
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:layout_above="@+id/frameMenu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewUserInfo"
+        android:textColor="#ffffff"
+        android:text="id0000000"
+        android:textSize="10dp"/>
+
     <ImageView
         android:scaleType="centerCrop"
         android:layout_width="140dp"
@@ -94,18 +104,6 @@
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="false"
         android:layout_alignParentBottom="true" />
-
-    <TextView
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textViewValueCreditBalance"
-        android:textColor="#ffffff"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:hint="Value"
-        android:layout_marginTop="18dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -126,5 +124,16 @@
             android:singleLine="true" />
 
     </FrameLayout>
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewValueCreditBalance"
+        android:textColor="#ffffff"
+        android:hint="Value"
+        android:layout_above="@+id/textViewUserInfo"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

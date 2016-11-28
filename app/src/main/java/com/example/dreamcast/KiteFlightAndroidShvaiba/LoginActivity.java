@@ -17,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dreamcast.KiteFlightAndroidShvaiba.additional.JSONParser;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
@@ -50,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView forgot; // Button "forgot"
 
-    Button   bLogin;
+    Button   bLogin, bLoginFacebook;
     CheckBox cbTest;
 
     Context  mainContext;
@@ -80,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         AppEventsLogger.activateApp(this); //Facrbook event
 
         bLogin         = (Button)      findViewById(R.id.buttonLogin1);
+        bLoginFacebook = (Button)      findViewById(R.id.buttonLogin2);
         forgot         = (TextView)    findViewById(R.id.textViewForgotPassword);
         loginButton    = (LoginButton) findViewById(R.id.login_button);
         cbTest         = (CheckBox)    findViewById(R.id.checkBox_forTest);
@@ -90,15 +93,23 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(mainContext, "No internet connection!", Toast.LENGTH_LONG).show();
         }
 
+        loginButton.setReadPermissions(Arrays.asList(
+                "public_profile", "email", "user_birthday", "user_friends"));
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+                Profile profile = Profile.getCurrentProfile();
+                String firstName = profile.getFirstName();
+
                 Toast.makeText(mainContext, "User ID: "
                         + loginResult.getAccessToken().getUserId()
                         + "\n" + "Auth Token: "
                         + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, MainMenu.class);
-                intent.putExtra("user_id", 2); // parameter transfer
+                intent.putExtra("user_id", loginResult.getAccessToken().getUserId()); // parameter transfer
+                intent.putExtra("user_name", firstName);
                 startActivity(intent);
             }
 
@@ -147,6 +158,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        bLoginFacebook.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginButton.performClick();
+            }
+        });
 
     }
 
@@ -189,8 +206,8 @@ public class LoginActivity extends AppCompatActivity {
             }
             else {
                 params.add(new BasicNameValuePair("api_key", api_key));
-                params.add(new BasicNameValuePair("email_address", etEmailAddress.getText()+""));
-                params.add(new BasicNameValuePair("password", etPassword.getText()+""));
+                params.add(new BasicNameValuePair("email_address", etEmailAddress.getText().toString()));
+                params.add(new BasicNameValuePair("password", etPassword.getText().toString()));
                 params.add(new BasicNameValuePair("device_token", device_token));
             }
 
@@ -209,17 +226,21 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     //read parameter that sent the server
                     res = jsonData.getString("message");
-                    user_id = jsonData.getJSONObject("data").getString("id");
+
 
 
                     if(res.equals("Logged in successfully.")) {
+                        user_id = jsonData.getJSONObject("data").getString("id");
+
                         Toast.makeText(mainContext, res + " id " + user_id.toString(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                         intent.putExtra("user_id", user_id); // parameter transfer
+                        intent.putExtra("user_name", jsonData.getJSONObject("data").getString("name_first") + " " + jsonData.getJSONObject("data").getString("name_last"));
                         startActivity(intent);
                     }
                     else {
                         Toast.makeText(mainContext, res, Toast.LENGTH_SHORT).show();
+                        forgot.setVisibility(VISIBLE);
                     }
 
                 } catch (JSONException e) {

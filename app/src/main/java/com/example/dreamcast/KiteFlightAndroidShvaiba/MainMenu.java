@@ -26,13 +26,13 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class MainMenu extends AppCompatActivity {
 
     ImageView imageButtonSend, imageButtonHistory;
-    TextView  creditBalance;
+    TextView  creditBalance, tvUserInfo;
 
     Context   mainContext;
 
     String    apiURL  = "http://staging.api.kiteflightapp.com/v1/credits/users_available_credits";
     String    api_key = "g4sksgk0kspscc4oogo8wow0w0ocossg000og0so";
-    String    user_id = "";
+    String    user_id = "", user_name = "";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,12 +47,16 @@ public class MainMenu extends AppCompatActivity {
 
         mainContext = this;
 
-        imageButtonHistory = (ImageView) findViewById((R.id.imageViewButtonOrderHistory));
-        imageButtonSend    = (ImageView) findViewById((R.id.imageViewButtonSendKite));
+        imageButtonHistory = (ImageView) findViewById(R.id.imageViewButtonOrderHistory);
+        imageButtonSend    = (ImageView) findViewById(R.id.imageViewButtonSendKite);
         creditBalance      = (TextView)  findViewById(R.id.textViewValueCreditBalance);
+        tvUserInfo         = (TextView)  findViewById(R.id.textViewUserInfo);
 
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
+        user_name = intent.getStringExtra("user_name");
+        tvUserInfo.setText(user_name + "\nid " + user_id);
+
         new MainMenu.UpdateTask(mainContext).execute(apiURL);
     }
 
