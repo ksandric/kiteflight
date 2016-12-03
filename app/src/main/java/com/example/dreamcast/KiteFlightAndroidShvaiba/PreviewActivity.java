@@ -1,5 +1,6 @@
 package com.example.dreamcast.KiteFlightAndroidShvaiba;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -11,10 +12,12 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class PreviewActivity extends AppCompatActivity {
 
     TextView tvPText;
-
+    Context mainContext;
     ImageView mainImage, avatarImage;
 
     @Override
@@ -27,6 +30,8 @@ public class PreviewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Preview Card");
 
+        mainContext = this;
+
         tvPText = (TextView) findViewById(R.id.textViewMessageTextPreview);
         mainImage = (ImageView) findViewById(R.id.imageMainPreview);
         avatarImage = (ImageView) findViewById(R.id.avatarImagePreview);
@@ -34,9 +39,8 @@ public class PreviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tvPText.setText(intent.getStringExtra("text"));
 
-        mainImage.setImageBitmap((Bitmap) intent.getParcelableExtra("mainImage"));
-        avatarImage.setImageBitmap((Bitmap) intent.getParcelableExtra("avatarImage"));
-
+        Picasso.with(PreviewActivity.this).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(mainImage);
+        Picasso.with(PreviewActivity.this).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(avatarImage);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

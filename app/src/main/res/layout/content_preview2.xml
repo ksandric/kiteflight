@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_preview2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dreamcast.KiteFlightAndroidShvaiba.PreviewActivity2"
+    tools:showIn="@layout/activity_preview2"
+    android:background="#e7e7e7">
+
+<Button
+    android:textAllCaps="false"
+    android:text="Send"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:ellipsize="middle"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/buttonPreviewSend"
+    android:textColor="@android:color/background_light"
+    android:background="#2196f3"
+    android:layout_marginRight="25dp" />
+
+<Button
+    android:textAllCaps="false"
+    android:text="Edit"
+    android:layout_height="wrap_content"
+    android:ellipsize="middle"
+    android:id="@+id/buttonPreviewEdit"
+    android:textColor="@android:color/background_light"
+    android:background="#838383"
+    android:layout_alignBaseline="@+id/buttonPreviewSend"
+    android:layout_alignBottom="@+id/buttonPreviewSend"
+    android:layout_alignParentStart="true"
+    android:layout_marginLeft="25dp"
+    android:layout_width="150dp" />
+
+<FrameLayout
+    android:id="@+id/frameLayoutPreviewTop"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:background="#2196f3"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true">
+
+
+    <ImageView
+        android:rotation="-85"
+        android:id="@+id/imageView12"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:alpha=".2"
+        android:contentDescription="background image 2"
+        android:scaleType="centerInside"
+        android:src="@drawable/vector_logo_1"
+        android:layout_marginLeft="51dp" />
+
+    <ImageView
+        android:rotation="-35"
+        android:id="@+id/imageView13"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:alpha=".2"
+        android:contentDescription="background image 2"
+        android:scaleType="centerInside"
+        android:src="@drawable/vector_logo_2"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:rotation="-35"
+        android:id="@+id/imageView14"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:alpha=".2"
+        android:contentDescription="background image 3"
+        android:scaleType="centerInside"
+        android:src="@drawable/vector_logo_1" />
+
+    <ImageView
+        android:rotation="35"
+        android:id="@+id/imageView15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:alpha="0.2"
+        android:contentDescription="background image 4"
+        android:scaleType="centerInside"
+        android:src="@drawable/vector_logo_2"
+        android:layout_marginLeft="28dp" />
+
+    <TextView
+        android:text="Great.."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="-35dp"
+        android:textSize="35dp"
+        android:textColor="#fff"
+        android:alpha="0.9"
+        android:id="@+id/textView4" />
+    <TextView
+        android:text="Finally Your Kites is Ready to Flight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="#fff"
+        android:alpha="0.9"
+        android:id="@+id/textView42" />
+
+</FrameLayout>
+
+
+
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:id="@+id/Frame03"
+    android:background="#ffffff"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginTop="220dp">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/no_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageMainPreview"
+        android:layout_gravity="top|left|center_vertical" />
+
+    <ImageView
+        android:rotation="90"
+        android:scaleType="fitXY"
+        android:src="@drawable/vector_line"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView9"
+        android:layout_gravity="center"
+        android:alpha="0.1"
+        android:adjustViewBounds="false" />
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/no_photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/avatarImagePreview"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp" />
+
+    <TextView
+        android:hint="Message text. Message text. Message text. Message text. Message text. Message text. Message text. Message text. Message text????????????"
+        android:layout_gravity="right|bottom"
+        android:layout_width="150dp"
+        android:layout_height="95dp"
+        android:textSize="10dp"
+        android:id="@+id/textViewMessageTextPreview" />
+
+    <ImageView
+        android:alpha="0.9"
+        android:scaleType="fitXY"
+        android:src="@drawable/vector_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonSize"
+        android:layout_gravity="right|bottom" />
+
+</FrameLayout>
+
+
+</RelativeLayout>

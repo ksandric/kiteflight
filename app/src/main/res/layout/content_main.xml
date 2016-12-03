@@ -137,7 +137,7 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="130dp"
             android:alpha=".25"
             android:scaleType="centerInside"
@@ -267,7 +267,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonLogin2"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView2" />
 

@@ -14,6 +14,16 @@
     tools:showIn="@layout/app_bar_main_picture"
     android:background="#e7e7e7">
 
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/no_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goneImage"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"/>
+
     <FrameLayout
         android:id="@+id/frameMainPicture1"
         android:layout_width="match_parent"
@@ -176,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="MAIN IMAGE LOCATION"
-                android:id="@+id/textView3"
+                android:id="@+id/textViewIMage"
                 android:layout_gravity="left|center_vertical"
                 android:textColor="#ffffff"
                 android:gravity="center"

@@ -41,10 +41,6 @@ public class WriteMessageActivity extends AppCompatActivity {
 
         edittext.addTextChangedListener(myEditTextListener);
 
-        Intent intent = getIntent();
-        avatarImage = intent.getStringExtra("avatarImage");
-        mainImage = intent.getStringExtra("mainImage");
-
         }
 
     private TextWatcher myEditTextListener = new TextWatcher() {
@@ -82,10 +78,8 @@ public class WriteMessageActivity extends AppCompatActivity {
                     Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Intent intent = new Intent(this, PreviewActivity.class);
+                    Intent intent = new Intent(this, PreviewActivity2.class);
                     intent.putExtra("text", edittext.getText().toString());
-                    intent.putExtra("mainImage", mainImage);
-                    intent.putExtra("avatarImage", avatarImage);
                     startActivity(intent);
                 }
                 return true;
