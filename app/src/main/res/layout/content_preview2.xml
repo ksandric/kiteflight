@@ -168,9 +168,10 @@
 
     <TextView
         android:hint="Message text. Message text. Message text. Message text. Message text. Message text. Message text. Message text. Message text????????????"
-        android:layout_gravity="right|bottom"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
         android:layout_width="150dp"
-        android:layout_height="95dp"
+        android:layout_height="120dp"
         android:textSize="10dp"
         android:id="@+id/textViewMessageTextPreview" />
 

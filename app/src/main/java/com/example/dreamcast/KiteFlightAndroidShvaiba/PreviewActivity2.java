@@ -24,6 +24,7 @@ public class PreviewActivity2 extends AppCompatActivity {
     ImageView mainImage, avatarImage, ivSize, ivBig1, ivBig2;
     FrameLayout flFrame, flFrameTop;
     Button bSend, bEdit, bBack;
+    String sTextSource = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,17 @@ public class PreviewActivity2 extends AppCompatActivity {
         bBack = (Button) findViewById(R.id.buttonPreviewBigBack);
 
         Intent iintent = getIntent();
-        tvPText.setText(iintent.getStringExtra("text"));
+        sTextSource = iintent.getStringExtra("text");
+
+        String sText = sTextSource;
+
+        if (sText.length() > 17) sText = sText.substring(0, 17) + "\n" + sText.substring(17);
+        if (sText.length() > 33) sText = sText.substring(0, 33) + "\n" + sText.substring(33);
+        if (sText.length() > 52) sText = sText.substring(0, 52) + "\n" + sText.substring(52);
+        if (sText.length() > 68) sText = sText.substring(0, 68) + "\n" + sText.substring(68);
+
+
+        tvPText.setText(sText);
 
         Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(mainImage);
         Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(avatarImage);
@@ -101,7 +112,7 @@ public class PreviewActivity2 extends AppCompatActivity {
                 Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(ivBig1);
                 Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(ivBig2);
 
-                tvBig.setText(tvPText.getText().toString());
+                tvBig.setText(sTextSource);
 
                 bBack.setVisibility(View.VISIBLE);
                 ivBig2.setVisibility(View.VISIBLE);
