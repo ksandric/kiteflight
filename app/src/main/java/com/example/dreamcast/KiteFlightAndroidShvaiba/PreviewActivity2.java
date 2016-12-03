@@ -19,11 +19,11 @@ import com.squareup.picasso.Picasso;
 
 public class PreviewActivity2 extends AppCompatActivity {
 
-    TextView tvPText;
+    TextView tvPText, tvBig;
     Context mainContext;
-    ImageView mainImage, avatarImage, ivSize;
+    ImageView mainImage, avatarImage, ivSize, ivBig1, ivBig2;
     FrameLayout flFrame, flFrameTop;
-    Button bSend, bEdit;
+    Button bSend, bEdit, bBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,34 @@ public class PreviewActivity2 extends AppCompatActivity {
         flFrameTop = (FrameLayout) findViewById(R.id.frameLayoutPreviewTop);
         bSend = (Button) findViewById(R.id.buttonPreviewSend);
         bEdit = (Button) findViewById(R.id.buttonPreviewEdit);
+        tvBig = (TextView) findViewById(R.id.textViewPreviewTextBig);
+        ivBig1 = (ImageView) findViewById(R.id.imageViewPreviewBig1);
+        ivBig2 = (ImageView) findViewById(R.id.imageViewPreviewBig2);
+        bBack = (Button) findViewById(R.id.buttonPreviewBigBack);
 
         Intent iintent = getIntent();
         tvPText.setText(iintent.getStringExtra("text"));
 
-        Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(mainImage);
-        Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(avatarImage);
+        Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(mainImage);
+        Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(avatarImage);
 
+
+
+        bBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mainContext, "Size", Toast.LENGTH_SHORT).show();
+                flFrame.setVisibility(View.VISIBLE);
+                flFrameTop.setVisibility(View.VISIBLE);
+                bEdit.setVisibility(View.VISIBLE);
+                bSend.setVisibility(View.VISIBLE);
+
+                bBack.setVisibility(View.INVISIBLE);
+                ivBig2.setVisibility(View.INVISIBLE);
+                ivBig1.setVisibility(View.INVISIBLE);
+                tvBig.setVisibility(View.INVISIBLE);
+            }
+        });
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +97,16 @@ public class PreviewActivity2 extends AppCompatActivity {
                 flFrameTop.setVisibility(View.INVISIBLE);
                 bEdit.setVisibility(View.INVISIBLE);
                 bSend.setVisibility(View.INVISIBLE);
+
+                Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/2.png").into(ivBig1);
+                Picasso.with(mainContext).load("file://" + mainContext.getExternalCacheDir().toString() + "/1.png").into(ivBig2);
+
+                tvBig.setText(tvPText.getText().toString());
+
+                bBack.setVisibility(View.VISIBLE);
+                ivBig2.setVisibility(View.VISIBLE);
+                ivBig1.setVisibility(View.VISIBLE);
+                tvBig.setVisibility(View.VISIBLE);
             }
         });
     }
