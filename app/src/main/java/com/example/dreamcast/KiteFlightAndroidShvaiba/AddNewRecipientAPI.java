@@ -178,7 +178,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                Toast.makeText(getBaseContext(), states[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), states[position], Toast.LENGTH_SHORT).show();
                 state = states[position].substring(0,2);
                 if(iswitch == 2){
                     new UpdateTask(mainContext).execute(apiURL);
@@ -196,7 +196,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                Toast.makeText(getBaseContext(), facilities[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), facilities[position], Toast.LENGTH_SHORT).show();
                 facilities_id = facilities[position].substring(0, facilities[position].indexOf(","));
 
                 //state = states[position].substring(0,2);
@@ -288,7 +288,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
 
                     //etID.setText(jsonData.getJSONObject("data").toString());
 
-                    if (iswitch == 1) Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
+                    //if (iswitch == 1) Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
 
 
 
@@ -307,7 +307,11 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                             jsonFacilities = jsonFacilities.replaceAll(",mailing_state:", "");
                             jsonFacilities = jsonFacilities.replaceAll("name:", "");
                             jsonFacilities = jsonFacilities.replaceAll(state, " ");
+
+                            jsonFacilities = jsonFacilities.replaceAll("\\}\\{", "");
+
                             facilities = jsonFacilities.split("id:");
+
                     //ЕСЛИ 0 ФАСИЛИТИ то очистить фасилити список
                             //etText7.setText(jsonFacilities);
 
