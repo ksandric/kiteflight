@@ -269,6 +269,7 @@ public class LoginActivity extends AppCompatActivity {
                         etEmailAddress.setText(sEmailFacebook.toString());
                         etPassword.setText("Facebook");
                         new LoginActivity.UpdateTask(mainContext).execute(apiURL);
+                        //+++kill Activity  add
 //                        Intent intent = new Intent(LoginActivity.this, MainMenu.class);
 //                        intent.putExtra("user_id", user_id); // parameter transfer
 //                        intent.putExtra("user_name", sFNFacebook + " " + sLNFacebook + " " + sEmailFacebook);
@@ -282,6 +283,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                         intent.putExtra("user_id", user_id); // parameter transfer
                         intent.putExtra("user_name", jsonData.getJSONObject("data").getString("name_first") + " " + jsonData.getJSONObject("data").getString("email_address"));
+                        //+++kill Activity
                         startActivity(intent);
                     }
                     else {

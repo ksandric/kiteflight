@@ -307,11 +307,17 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                             jsonFacilities = jsonFacilities.replaceAll(",mailing_state:", "");
                             jsonFacilities = jsonFacilities.replaceAll("name:", "");
                             jsonFacilities = jsonFacilities.replaceAll(state, " ");
-
-                            jsonFacilities = jsonFacilities.replaceAll("\\}\\{", "");
-
+                            jsonFacilities = jsonFacilities.replaceAll("\\{", "");
+                            jsonFacilities = jsonFacilities.replaceAll("\\}", "");
+                            //jsonFacilities = jsonFacilities.replaceAll(" ,", " ");
                             facilities = jsonFacilities.split("id:");
-
+                            for (i = 0; i < total; i++) {
+                                facilities[i] = facilities[i].substring(facilities[i].indexOf(","), facilities[i].length());
+                                //facilities[i] = facilities[i].replace(",", "");
+                            }
+//                            for (i = 0; i < total; i++) {
+//                                facilities[i] = facilities[i].substring(1, facilities[i].length());
+//                            }
                     //ЕСЛИ 0 ФАСИЛИТИ то очистить фасилити список
                             //etText7.setText(jsonFacilities);
 
@@ -335,6 +341,10 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                         jsonStates = jsonStates.substring(1, jsonStates.length()-1);
                         jsonStates = jsonStates.replaceAll("\"","");
                         states = jsonStates.split(",");
+
+                        for (int i = 0; i < states.length; i++){
+                            states[i] = states[i].substring(0, 2);
+                        }
 
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewRecipientAPI.this, android.R.layout.simple_spinner_item, states);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
