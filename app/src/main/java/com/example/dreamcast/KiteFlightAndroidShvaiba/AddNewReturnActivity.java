@@ -12,7 +12,7 @@ public class AddNewReturnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_return);;
+        setContentView(R.layout.activity_add_new_return);
 
         //configuration ActionBar
         getSupportActionBar().setHomeButtonEnabled(true);

@@ -74,7 +74,7 @@ public class PreviewActivity2 extends AppCompatActivity {
         bBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainContext, "Size", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Size", Toast.LENGTH_SHORT).show();
                 flFrame.setVisibility(View.VISIBLE);
                 flFrameTop.setVisibility(View.VISIBLE);
                 bEdit.setVisibility(View.VISIBLE);
@@ -89,7 +89,7 @@ public class PreviewActivity2 extends AppCompatActivity {
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainContext, "Sending...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Sending...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PreviewActivity2.this, MainMenu.class);
                 startActivity(intent);
             }
@@ -97,13 +97,13 @@ public class PreviewActivity2 extends AppCompatActivity {
         bEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainContext, "Edit pressed...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Edit pressed...", Toast.LENGTH_SHORT).show();
             }
         });
         ivSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainContext, "Size", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Size", Toast.LENGTH_SHORT).show();
                 flFrame.setVisibility(View.INVISIBLE);
                 flFrameTop.setVisibility(View.INVISIBLE);
                 bEdit.setVisibility(View.INVISIBLE);

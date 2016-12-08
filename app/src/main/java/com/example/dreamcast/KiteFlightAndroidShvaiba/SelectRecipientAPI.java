@@ -113,7 +113,7 @@ public class SelectRecipientAPI extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
                                     long id) {
-                Toast.makeText(getApplicationContext(), ((TextView) itemClicked.findViewById(R.id.name2)).getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), ((TextView) itemClicked.findViewById(R.id.name2)).getText(), Toast.LENGTH_SHORT).show();
                 if ( ((ImageView) itemClicked.findViewById(R.id.imageView25)).getVisibility() == View.VISIBLE) {
                     ((ImageView) itemClicked.findViewById(R.id.imageView25)).setVisibility(View.INVISIBLE);
                 }
@@ -186,7 +186,7 @@ public class SelectRecipientAPI extends AppCompatActivity {
                     total = Integer.parseInt(jsonData.getString("total"));
 
                     if (iswitch == 1){
-                        Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
                     if (total != 0){
@@ -203,7 +203,7 @@ public class SelectRecipientAPI extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
             }
         }
 

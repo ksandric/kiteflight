@@ -99,7 +99,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                 {
 
                     tvInfo.setText(Html.fromHtml("<font COLOR='RED'>Please fill all fields</font>"));
-                    Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -365,7 +365,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -386,7 +386,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                 if (etFirstName.length() == 0 || etLastName.length() == 0 || etID.length() == 0)
                 {
                     tvInfo.setText(Html.fromHtml("<font COLOR='RED'>Please fill all fields</font>"));
-                    Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     iswitch = 1;

@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginButton     loginButton;
     private CallbackManager callbackManager;
 
-    TextView forgot; // Button "forgot"
+    TextView forgot, tvInfo; // Button "forgot"
 
     Button   bLogin, bLoginFacebook;
     CheckBox cbTest;
@@ -94,9 +95,10 @@ public class LoginActivity extends AppCompatActivity {
         cbTest         = (CheckBox)    findViewById(R.id.checkBox_forTest);
         etEmailAddress = (EditText)    findViewById(R.id.editTextEmail);
         etPassword     = (EditText)    findViewById(R.id.editTextPassword);
+        tvInfo         = (TextView)    findViewById(R.id.textViewTitle);
 
         if ( !checkConnection(mainContext)) {
-            Toast.makeText(mainContext, "No internet connection!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(mainContext, "No internet connection!", Toast.LENGTH_LONG).show();
         }
 
         loginButton.setReadPermissions(Arrays.asList(
@@ -129,10 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                 request.executeAsync();
 
 
-                Toast.makeText(mainContext, "User ID: "
-                        + loginResult.getAccessToken().getUserId()
-                        + "\n" + "Auth Token: "
-                        + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "User ID: "+ loginResult.getAccessToken().getUserId()+ "\n" + "Auth Token: "+ loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
 
                 sFNFacebook = profile.getFirstName();
                 sLNFacebook = profile.getLastName();
@@ -142,12 +141,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Toast.makeText(mainContext, "Login attempt canceled.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Login attempt canceled.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException e) {
-                Toast.makeText(mainContext, "Login attempt failed.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "Login attempt failed.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -171,7 +170,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (etEmailAddress.getText().length() == 0 || etPassword.getText().length() == 0)
                 {
-                    Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    tvInfo.setText(Html.fromHtml("<font COLOR='RED'>Please fill all fields</font>"));
+                    //Toast.makeText(mainContext, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -279,7 +279,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(res.equals("Logged in successfully.")) {
                         user_id = jsonData.getJSONObject("data").getString("id");
 
-                        Toast.makeText(mainContext, res + " id " + user_id.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mainContext, res + " id " + user_id.toString(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                         intent.putExtra("user_id", user_id); // parameter transfer
                         intent.putExtra("user_name", jsonData.getJSONObject("data").getString("name_first") + " " + jsonData.getJSONObject("data").getString("email_address"));
@@ -287,7 +287,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(mainContext, res, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mainContext, res, Toast.LENGTH_SHORT).show();
                         forgot.setVisibility(VISIBLE);
                     }
 
@@ -295,7 +295,7 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "null", Toast.LENGTH_SHORT).show();
             }
         }
 

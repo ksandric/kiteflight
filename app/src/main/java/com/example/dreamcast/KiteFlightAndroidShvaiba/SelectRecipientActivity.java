@@ -108,7 +108,7 @@ public class SelectRecipientActivity extends AppCompatActivity {
             if (phones != null) {
                 Log.e("count", "" + phones.getCount());
                 if (phones.getCount() == 0) {
-                    Toast.makeText(SelectRecipientActivity.this, "No contacts in your contact list.", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SelectRecipientActivity.this, "No contacts in your contact list.", Toast.LENGTH_LONG).show();
                 }
 
                 while (phones.moveToNext() && email.moveToNext()) {

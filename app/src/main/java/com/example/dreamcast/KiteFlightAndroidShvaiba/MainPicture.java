@@ -119,7 +119,7 @@ public class MainPicture extends AppCompatActivity {
             }
             catch (Exception e)
             {
-                Toast.makeText(mainContext, "save error", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mainContext, "save error", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -145,7 +145,7 @@ public class MainPicture extends AppCompatActivity {
                 Uri resultUri = result.getUri();
                 mImageView.setImageURI(resultUri);
                 ivGoneImage.setImageURI(resultUri);
-                Toast.makeText(mainContext, resultUri.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(mainContext, resultUri.toString(), Toast.LENGTH_LONG).show();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
