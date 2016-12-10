@@ -26,7 +26,7 @@
         android:layout_above="@+id/textView11"/>
 
     <Button
-        android:text="+ Add New Rcipient"
+        android:text="+ Add New Recipient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

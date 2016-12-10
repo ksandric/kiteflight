@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class MainMenu extends AppCompatActivity {
 
     ImageView imageButtonSend, imageButtonHistory;
     TextView  creditBalance, tvUserInfo;
+    FrameLayout flCreditBalanceText;
 
     Context   mainContext;
 
@@ -51,11 +53,29 @@ public class MainMenu extends AppCompatActivity {
         imageButtonSend    = (ImageView) findViewById(R.id.imageViewButtonSendKite);
         creditBalance      = (TextView)  findViewById(R.id.textViewValueCreditBalance);
         tvUserInfo         = (TextView)  findViewById(R.id.textViewUserInfo);
+        flCreditBalanceText= (FrameLayout) findViewById(R.id.frameMenu2);
 
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
         user_name = intent.getStringExtra("user_name");
         tvUserInfo.setText(user_name + "\nid " + user_id);
+
+        creditBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this, PurchaseActivity.class);
+                intent.putExtra("user_id", user_id); // parameter transfer
+                startActivity(intent);
+            }
+        });
+        flCreditBalanceText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this, PurchaseActivity.class);
+                intent.putExtra("user_id", user_id); // parameter transfer
+                startActivity(intent);
+            }
+        });
 
         new MainMenu.UpdateTask(mainContext).execute(apiURL);
     }
