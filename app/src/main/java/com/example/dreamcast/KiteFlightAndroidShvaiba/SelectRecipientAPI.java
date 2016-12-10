@@ -122,6 +122,7 @@ public class SelectRecipientAPI extends AppCompatActivity {
                 }
                 //
                 Intent intent = new Intent(SelectRecipientAPI.this, MainPicture.class);
+                intent.putExtra("user_id", user_id); // parameter transfer
                 startActivity(intent);
 
             }
@@ -222,6 +223,7 @@ public class SelectRecipientAPI extends AppCompatActivity {
                 return true;
             case R.id.action_next:
                 Intent intent = new Intent(this, MainPicture.class);
+                intent.putExtra("user_id", user_id); // parameter transfer
                 startActivity(intent);
                 return true;
             default:

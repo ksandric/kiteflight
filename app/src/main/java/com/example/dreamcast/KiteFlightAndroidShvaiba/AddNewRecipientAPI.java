@@ -220,7 +220,6 @@ public class AddNewRecipientAPI extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
-
         new UpdateTask(mainContext).execute(apiURL);
 
     }
@@ -342,9 +341,10 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                         sState.setAdapter(adapter);
-                        iswitch = 3;
+                    }
 
-
+                    else {
+                        iswitch = 0;
                     }
 
 

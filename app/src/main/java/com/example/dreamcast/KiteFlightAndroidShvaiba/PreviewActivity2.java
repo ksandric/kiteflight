@@ -25,6 +25,7 @@ public class PreviewActivity2 extends AppCompatActivity {
     FrameLayout flFrame, flFrameTop;
     Button bSend, bEdit, bBack;
     String sTextSource = "";
+    String   user_id = "NA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class PreviewActivity2 extends AppCompatActivity {
 
         Intent iintent = getIntent();
         sTextSource = iintent.getStringExtra("text");
+        user_id = iintent.getStringExtra("user_id");
 
         String sText = sTextSource;
 
@@ -91,6 +93,7 @@ public class PreviewActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(mainContext, "Sending...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PreviewActivity2.this, MainMenu.class);
+                intent.putExtra("user_id", user_id); // parameter transfer
                 startActivity(intent);
             }
         });

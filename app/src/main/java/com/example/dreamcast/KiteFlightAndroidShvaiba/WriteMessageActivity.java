@@ -22,6 +22,7 @@ public class WriteMessageActivity extends AppCompatActivity {
     int Value = 200; // message length
     Context mainContext;
     String avatarImage = "", mainImage = "";
+    String   user_id = "NA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,9 @@ public class WriteMessageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mainContext = this;
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         edittext  = (EditText) findViewById(R.id.editText);
         textValue = (TextView) findViewById(R.id.textValue);
@@ -80,6 +84,7 @@ public class WriteMessageActivity extends AppCompatActivity {
                 else{
                     Intent intent = new Intent(this, PreviewActivity2.class);
                     intent.putExtra("text", edittext.getText().toString());
+                    intent.putExtra("user_id", user_id); // parameter transfer
                     startActivity(intent);
                 }
                 return true;

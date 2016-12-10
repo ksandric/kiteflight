@@ -41,6 +41,7 @@ public class MainPicture extends AppCompatActivity {
     Context mainContext;
 
     int togle = 0;
+    String   user_id = "NA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,9 @@ public class MainPicture extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         mainContext = this;
 
@@ -68,8 +72,6 @@ public class MainPicture extends AppCompatActivity {
         arrowImage.setVisibility(View.GONE);
         buttonUseThisOne.setClickable(false);
         buttonUseThisOne.setAlpha((float) 0.5);
-
-
     }
 
     public void onClickNewPhoto(View v) {
@@ -101,6 +103,7 @@ public class MainPicture extends AppCompatActivity {
             }
 
             Intent intent = new Intent(this, WriteMessageActivity.class);
+            intent.putExtra("user_id", user_id); // parameter transfer
             startActivity(intent);
         }
         if(togle == 0){
