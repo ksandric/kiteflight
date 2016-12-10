@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -184,6 +185,11 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                     new UpdateTask(mainContext).execute(apiURL);
                 }
                 iswitch = 2;
+
+                //keyboard hide
+                InputMethodManager imm = (InputMethodManager) getSystemService(mainContext.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
             }
 
             @Override
@@ -199,6 +205,9 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), facilities[position], Toast.LENGTH_SHORT).show();
                 facilities_id = facilities[position].substring(0, facilities[position].indexOf(","));
 
+                //keyboard hide
+                InputMethodManager imm = (InputMethodManager) getSystemService(mainContext.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 //state = states[position].substring(0,2);
                 //etFirstName.setText(state);
 //                if(iswitch == 2){
@@ -283,22 +292,11 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                 String res = "";
                 try {
                     //read parameter that sent the server
-
-
-
-                    //etID.setText(jsonData.getJSONObject("data").toString());
-
                     //if (iswitch == 1) Toast.makeText(mainContext, jsonData.getString("message"), Toast.LENGTH_SHORT).show();
-
-
-
-
                     if (iswitch == 2){
                         String jsonFacilities = "";
                         total = Integer.parseInt(jsonData.getString("total"));
                         if(total!=0) {
-
-
                             for (i = 0; i < total; i++) {
                                 jsonFacilities += jsonData.getJSONArray("data").getString(i);
                             }
@@ -309,17 +307,11 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                             jsonFacilities = jsonFacilities.replaceAll(state, " ");
                             jsonFacilities = jsonFacilities.replaceAll("\\{", "");
                             jsonFacilities = jsonFacilities.replaceAll("\\}", "");
-                            //jsonFacilities = jsonFacilities.replaceAll(" ,", " ");
                             facilities = jsonFacilities.split("id:");
                             for (i = 0; i < total; i++) {
-                                facilities[i] = facilities[i].substring(facilities[i].indexOf(","), facilities[i].length());
-                                //facilities[i] = facilities[i].replace(",", "");
+                                facilities[i] = facilities[i].substring(facilities[i].indexOf(",") + 1);
+                                facilities[i] += "                                                                 ,";
                             }
-//                            for (i = 0; i < total; i++) {
-//                                facilities[i] = facilities[i].substring(1, facilities[i].length());
-//                            }
-                    //ЕСЛИ 0 ФАСИЛИТИ то очистить фасилити список
-                            //etText7.setText(jsonFacilities);
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewRecipientAPI.this, android.R.layout.simple_spinner_item, facilities);
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -328,7 +320,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                         }
 
                         if (total == 0){
-                            facilities = new String[] {"No facilities found for this state.,"};
+                            facilities = new String[] {"No facilities found for this state                                                            ,"};
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewRecipientAPI.this, android.R.layout.simple_spinner_item, facilities);
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -350,6 +342,7 @@ public class AddNewRecipientAPI extends AppCompatActivity {
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                         sState.setAdapter(adapter);
+                        iswitch = 3;
 
 
                     }

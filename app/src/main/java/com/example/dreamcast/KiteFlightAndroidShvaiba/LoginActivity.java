@@ -136,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                 sFNFacebook = profile.getFirstName();
                 sLNFacebook = profile.getLastName();
                 iSwitch = 1;
+
                 new LoginActivity.UpdateTask(mainContext).execute(apiURL);
             }
 
@@ -176,6 +177,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 else {
+                    bLogin.setClickable(false);
+                    bLogin.setAlpha((float) 0.5);
                     new LoginActivity.UpdateTask(mainContext).execute(apiURL);
                 }
 
@@ -288,6 +291,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else {
                         //Toast.makeText(mainContext, res, Toast.LENGTH_SHORT).show();
+                        loginButton.setClickable(true);
+                        bLogin.setAlpha((float) 1);
                         forgot.setVisibility(VISIBLE);
                     }
 
