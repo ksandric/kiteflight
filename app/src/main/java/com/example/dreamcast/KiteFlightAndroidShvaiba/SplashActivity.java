@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
     Button login0;
     Button register;
     Context  mainContext;
-
+//git test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
